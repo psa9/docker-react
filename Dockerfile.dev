@@ -1,0 +1,15 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+#COPY ei ole dev ympäristössä enää välttämätön
+#Koska docker-composessa on määritetty tuo /app/ volume
+# mutta jos haluaisi kopioida tämän dockerfilen pohjaksi 
+#tuotantoon käytettäväksi, silloin tälle voisi olla käyttöä
+#joten helpottamiseksi tämä kannattaa jättää tähän.
+COPY . .
+
+CMD ["npm","run","start"]
