@@ -7,7 +7,7 @@ before_install:
   - docker build -t psa9/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true psa9/docker-react npm run test
+  - docker run -e CI=true psa9/docker-react npm run test -- --coverage
 #deploy:
 #  provider: elasticbeanstalk
 #  region: "us-east-2"
